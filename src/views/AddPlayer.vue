@@ -7,9 +7,9 @@ import swal from "sweetalert2";
 //swal('Nickname','Already in use','error');
 
 const associationsStore = useAssociationsStore();
-associationsStore.Toast.fire({
-     title: "bravo care"
-})
+//associationsStore.Toast.fire({
+     //title: "bravo care"
+//})
 let nickName = ref("");
 
 function inputDone() {
