@@ -1,0 +1,126 @@
+ul{
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style-type: none;
+}
+
+body{
+  background-color: cornflowerblue;
+  font-family: sans-serif;
+}
+
+.rounded-button {
+  display: inline-block;
+  background-color: springgreen;
+  font-size: xx-large;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 110px;
+  border-radius: 50%;
+  width: 110px;
+}
+
+.rounded-button:hover {
+  background-color: red;
+}
+
+.nickname-button {
+  border-radius:50%;
+  width: 25rem;
+}
+
+.title {
+  text-align: center;
+  margin-top: 4%;
+  color:floralwhite;
+}
+
+.word-count {
+  display: inline-block;
+  position: relative;
+  top:50%;
+  transform: translateY(-50%);
+  font-size: xx-large;
+  color:black;
+}
+.countdown{
+    position: absolute;
+    width: 100%;
+    height: 10rem;
+    top:50%;
+    transform: translateY(-50%);
+  text-align: center;
+    background-color: red;
+}
+
+.nickname-div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nickname-input {
+  margin: 4% 25%;
+  line-height: 4rem; 
+  font-size: 4rem;
+  text-align: center;
+  background-color:lightgrey;
+}
+
+.nickname-label{
+  line-height: 70px;
+  background-color: red;
+  font-size: 4rem;
+  align-self:stretch;
+}
+
+.player-number {
+  background-color:springgreen;
+  margin-bottom: 2%;
+}
+
+.flex-box {
+  display: flex;
+  background-color: darkorange;
+  justify-content:center;
+  gap: 2%;
+}
+
+.chosen {
+  background-color: yellow;
+}
+
+.center-items {
+  text-align: center;
+}
+
+.continue-button {
+  margin-top:4%;
+  height: 5rem;
+  font-size:xx-large;
+  background-color: red;
+}
+
+
+.gameplay {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  border-style: dashed;
+  border-width: thick;
+  gap: 2rem;
+  list-style-type:none;
+}
+
+.gameplay > li {
+  background-color: brown;
+  border-style: solid;
+  border-width: thick;
+  border-color: yellow;
+  text-align: center;
+  width: 25%;
+}
