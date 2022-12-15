@@ -14,10 +14,10 @@ let nickName = ref("");
 
 function inputDone() {
   if (associationsStore.addPlayer(nickName.value.trim())) {
-    swal("Uspeh", "pizdo jedna", "danger");
+    //swal("Uspeh", "pizdo jedna", "danger");
     router.push({ name: "AddWords" });
   } else {
-    swal("Nickname", "Already in use", "error");
+   // swal("Nickname", "Already in use", "error");
   }
 }
 </script>
