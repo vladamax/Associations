@@ -19,7 +19,6 @@ body{
   padding-top:1vh;
   padding-bottom:1vh;
   border-radius: 50%;
-  /* line-height: 15vmin; */
   width: 50vw;
 }
 
@@ -102,6 +101,7 @@ body{
 
 .center-items {
   text-align: center;
+  margin-top:5vh;
 }
 
 .continue-button {
