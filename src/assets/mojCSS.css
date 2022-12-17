@@ -13,12 +13,19 @@ body{
 .rounded-button {
   display: inline-block;
   background-color: springgreen;
-  font-size: xx-large;
+  font-size: 5vw;
   text-align: center;
   vertical-align: middle;
-  line-height: 110px;
+  padding-top:1vh;
+  padding-bottom:1vh;
   border-radius: 50%;
-  width: 110px;
+  /* line-height: 15vmin; */
+  width: 50vw;
+}
+
+.rwidth {
+  line-height: 15vmin;
+  width:17vmin;
 }
 
 .rounded-button:hover {
@@ -27,7 +34,6 @@ body{
 
 .nickname-button {
   border-radius:50%;
-  width: 25rem;
 }
 
 .title {
@@ -66,7 +72,7 @@ body{
 .nickname-input {
   margin: 4% 25%;
   line-height: 4rem; 
-  font-size: 4rem;
+  font-size: 6vw;
   text-align: center;
   background-color:lightgrey;
 }

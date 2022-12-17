@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
 
-<button class="rounded-button"
+<button class="rounded-button rwidth"
 :class="{
     'chosen': modelValue ==number
 }"

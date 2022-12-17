@@ -29,7 +29,7 @@ function inputDone() {
     >
     <label class="nickname-label" for="nickName">Also known as</label>
     <input
-      class="nickname-input"
+      class="nickname-input "
       v-model="nickName"
       type="text"
       placeholder="your nickname here"
