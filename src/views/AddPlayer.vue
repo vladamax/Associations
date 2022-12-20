@@ -43,11 +43,13 @@ function inputDone() {
 
   <h1>
     TODO <br />
+    - Page/Alert for "Ready for the Next Phase?"
     - Const must be capital letter <br/>
     - Add list of currently signed players to this page<br />
     - Check if there is an existing player with the same name.<br />
     - What happens if the user clicks the back button?<br />
     - GameCountdown - Kjuras optimization? - Move gameStarting function to
     GameCountdown - Watchers izvuci ih u composable?
+    - ! Last Thing ! : // https://vitejs.dev/config/
   </h1>
 </template>
