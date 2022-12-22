@@ -9,7 +9,7 @@ lerna-debug.log*
 
 CssUcenje/
 BE/
-FE/TODO
+FE\TODO
 
 node_modules
 .DS_Store
