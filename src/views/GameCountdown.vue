@@ -14,12 +14,8 @@ let countdown = ref(3);
         else
         {
             setTimeout(function () {
-                countdown.value='kjuras :)';
-                setTimeout(function () {
                     router.push({ name: 'Game' });
-                },2000);
             },1000);
-
         }
     },{immediate:true})
 

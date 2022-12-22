@@ -1,6 +1,6 @@
 <script setup>
 
-const props = defineProps({
+let props = defineProps({
     'modelValue' : Number,
     'number' : Number
 })

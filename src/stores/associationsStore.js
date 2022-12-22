@@ -7,14 +7,14 @@ export const useAssociationsStore = defineStore("Associations", () => {
   let totalPlayers = ref();
   let wordsPerPlayer = ref();
 
-  let players = reactive([]);
-  let words = reactive([]);
+  let players = reactive(['peder','smrad','picka','govno']);
+  let words = reactive(['Vlada','je','smrad','najveci','na','svetu','koji','postoji']);
 
   let currentPlayersWords = reactive([]);
 
-  const playerCount = computed(() => players.length);
+  let playerCount = computed(() => players.length);
 
-  const currentPlayersWordsCount = computed(
+  let currentPlayersWordsCount = computed(
     () => currentPlayersWords.length
   );
 
@@ -43,14 +43,6 @@ export const useAssociationsStore = defineStore("Associations", () => {
     currentPlayersWords.splice(0,wordsPerPlayer.value);
   }
 
-  const Toast = swal.mixin({
-    icon: "success",
-    toast: true,
-    position: "top-right",
-    showConfirmButton: false,
-    timer: 2500,
-  });
-
   return {
     words,
     players,
@@ -62,7 +54,6 @@ export const useAssociationsStore = defineStore("Associations", () => {
     addPlayer,
     addWord,
     nextPlayer,
-    saveCurrentPlayersWords,
-    Toast
+    saveCurrentPlayersWords
   };
 });

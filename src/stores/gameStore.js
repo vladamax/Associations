@@ -4,7 +4,7 @@ import { ref, reactive, computed } from "vue";
 import { useAssociationsStore } from "./associationsStore.js";
 
 export const useGameStore = defineStore("Game", () => {
-  const associationsStore = useAssociationsStore();
+  const ASSOCIATIONS_STORE = useAssociationsStore();
 
   let shuffle = useShuffle();
 
@@ -12,7 +12,11 @@ export const useGameStore = defineStore("Game", () => {
   let currentPhaseWords = reactive([]);
 
   function nextPhase() {
-    currentPhaseWords.splice(0,currentPhaseWords.length,...shuffleWords(associationsStore.words));
+    currentPhaseWords.splice(
+      0,
+      currentPhaseWords.length,
+      ...shuffleWords(ASSOCIATIONS_STORE.words)
+    );
   }
 
   function nextTeam() {
@@ -21,11 +25,11 @@ export const useGameStore = defineStore("Game", () => {
 
   function gamePrepare() {
     scoreTable();
-    currentPhaseWords.push(...shuffleWords(associationsStore.words));
+    currentPhaseWords.push(...shuffleWords(ASSOCIATIONS_STORE.words));
   }
 
   function scoreTable() {
-    const players = shuffle.shuffle(associationsStore.players);
+    const players = shuffle.shuffle(ASSOCIATIONS_STORE.players);
     for (var i = 0; i < players.length; ) {
       score.push({
         player1: players[i],

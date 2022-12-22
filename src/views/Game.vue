@@ -3,11 +3,11 @@ import { useAssociationsStore } from "../stores/associationsStore";
 import { useGameStore } from "../stores/gameStore";
 import { ref, reactive, watch } from "vue";
 
-const gameStore = useGameStore();
+const GAME_STORE = useGameStore();
 
-gameStore.gamePrepare();
+GAME_STORE.gamePrepare();
 
-let nextWordIndex = ref(gameStore.currentPhaseWords.length - 3);
+let nextWordIndex = ref(GAME_STORE.currentPhaseWords.length - 3);
 let firstWordIndex = ref(nextWordIndex.value + 2);
 let secondWordIndex = ref(nextWordIndex.value + 1);
 
@@ -19,7 +19,7 @@ let countdown = ref(0);
 let timerOn = ref(false);
 
 function guessed(flag) {
-  gameStore.score[currentTeam.value].score++;
+  GAME_STORE.score[currentTeam.value].score++;
   if (flag == 1) {
     firstWordIndex.value = nextWordIndex.value;
   } else {
@@ -28,7 +28,7 @@ function guessed(flag) {
   if (nextWordIndex.value == -2) {
     currentPhase.value++;
     stopTheTime(false);
-    gameStore.nextPhase();
+    GAME_STORE.nextPhase();
     resetIndexes();
   } else {
     nextWordIndex.value--;
@@ -61,14 +61,14 @@ function stopTheTime(flag = true) {
 }
 
 function resetIndexes() {
-  nextWordIndex.value = gameStore.currentPhaseWords.length - 3;
+  nextWordIndex.value = GAME_STORE.currentPhaseWords.length - 3;
   firstWordIndex.value = nextWordIndex.value + 2;
   secondWordIndex.value = nextWordIndex.value + 1;
 }
 
 watch(timerOn, function () {
   if (timerOn.value == false && countdown.value == 0) {
-      if (currentTeam.value == gameStore.score.length - 1)
+      if (currentTeam.value == GAME_STORE.score.length - 1)
         currentTeam.value = 0;
       else currentTeam.value++;
     }
@@ -77,35 +77,22 @@ watch(timerOn, function () {
 
 <template>
   <ul class="gameplay">
-    <li v-for="team in gameStore.score">
+    <li v-for="team in GAME_STORE.score">
       <h3>{{ team.player1 }}</h3>
       <h1>{{ team.score }}</h1>
       <h3>{{ team.player2 }}</h3>
     </li>
   </ul>
 
-  <h1>
-    - IndexOne: {{ firstWordIndex }}<br />
-    - IndexTwo: {{ secondWordIndex }}<br />
-    - Word: {{ gameStore.currentPhaseWords[firstWordIndex] }}<br />
-    - Phase: {{ currentPhase }}<br />
-    - NextIndex: {{ nextWordIndex }}
-    <br />
-    - CurrentTeam: {{ currentTeam }}
-    <br />
-
-    {{ gameStore.words }} <br />
-  </h1>
-
   <button v-show="!timerOn" @click="startGame">Start the time</button>
 
   <div v-show="timerOn">
     <button v-show="firstWordIndex >= 0" @click="guessed(1)">
-      First word: {{ gameStore.currentPhaseWords[firstWordIndex] }}
+      {{ GAME_STORE.currentPhaseWords[firstWordIndex] }}
     </button>
 
     <button v-show="secondWordIndex >= 0" @click="guessed">
-      Second word: {{ gameStore.currentPhaseWords[secondWordIndex] }}
+      {{ GAME_STORE.currentPhaseWords[secondWordIndex] }}
     </button>
 
     <h1>{{ countdown }}</h1>

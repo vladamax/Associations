@@ -3,7 +3,7 @@ import { ref, watch } from 'vue';
 import RoundedButton from '../components/Rounded-button.vue';
 import { useAssociationsStore } from '../stores/associationsStore';
     
-    const associationsStore = useAssociationsStore();
+    const ASSOCIATIONS_STORE = useAssociationsStore();
 
     let players = ref(0);
     let wordsPerPlayer = ref(0);
@@ -13,8 +13,8 @@ watch([wordsPerPlayer,players], function(){
     if(players.value!=0 && wordsPerPlayer.value!=0)
     {
         bothOptionsChoosed=false;
-        associationsStore.totalPlayers = players.value;
-        associationsStore.wordsPerPlayer = wordsPerPlayer.value;
+        ASSOCIATIONS_STORE.totalPlayers = players.value;
+        ASSOCIATIONS_STORE.wordsPerPlayer = wordsPerPlayer.value;
     }
 });
 

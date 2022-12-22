@@ -3,19 +3,19 @@ import { useAssociationsStore } from "../stores/associationsStore";
 import { ref } from "vue";
 import router from "../router";
 
-const gameStore = useAssociationsStore();
+const GAMESTORE = useAssociationsStore();
 
 let currentWord = ref("");
 
 function wordAdded() {
-  gameStore.addWord(currentWord.value.trim());
+  GAMESTORE.addWord(currentWord.value.trim());
   currentWord.value = "";
-  if (gameStore.currentPlayersWordsCount == gameStore.wordsPerPlayer) {
-    if (gameStore.totalPlayers == gameStore.playerCount) {
-      gameStore.saveCurrentPlayersWords();
+  if (GAMESTORE.currentPlayersWordsCount == GAMESTORE.wordsPerPlayer) {
+    if (GAMESTORE.totalPlayers == GAMESTORE.playerCount) {
+      GAMESTORE.saveCurrentPlayersWords();
       router.push({ name: "Countdown" });
     } else {
-      gameStore.nextPlayer();
+      GAMESTORE.nextPlayer();
       router.push({ name: "AddPlayer" });
     }
   }
@@ -33,7 +33,6 @@ function wordAdded() {
       v-model="currentWord"
       type="text"
       placeholder="and enter it here"
-      id="word"
       required
     />
     <button type="submit" class="rounded-button nickname-button center-items">
@@ -42,7 +41,7 @@ function wordAdded() {
   </form>
 
   <h1 class="title word-count">
-    Word {{ gameStore.currentPlayersWordsCount + 1 }} /
-    {{ gameStore.wordsPerPlayer }}
+    Word {{ GAMESTORE.currentPlayersWordsCount + 1 }} /
+    {{ GAMESTORE.wordsPerPlayer }}
   </h1>
 </template>

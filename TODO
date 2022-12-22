@@ -1,0 +1,17 @@
+    - Page/Alert for "Ready for the Next Phase?"
+    - Const must be capital letter
+    - Boolean has to be : isTurnedOn; hasOwner...
+    - Add list of currently signed players to this page
+    - What happens if the user clicks the back button?
+    - GameCountdown - Kjuras optimization? - Move gameStarting function to
+    GameCountdown - Watchers izvuci ih u composable?
+    - ! Last Thing ! : // https://vitejs.dev/config/
+   
+   
+
+
+
+
+   
+    SOLVED <br/>
+    - Check if there is an existing player with the same name.
