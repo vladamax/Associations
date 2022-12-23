@@ -36,7 +36,7 @@ function wordAdded() {
       required
     />
     <button type="submit" class="rounded-button nickname-button center-items">
-      Remember my word's'
+      Remember my words
     </button>
   </form>
 

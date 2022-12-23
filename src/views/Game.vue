@@ -1,7 +1,10 @@
 <script setup>
 import { useAssociationsStore } from "../stores/associationsStore";
 import { useGameStore } from "../stores/gameStore";
-import { ref, reactive, watch } from "vue";
+import { ref, watch } from "vue";
+import { useFlash } from "../composables/useFlash.js";
+
+let { flash } = useFlash();
 
 const GAME_STORE = useGameStore();
 
@@ -16,7 +19,7 @@ let currentPhase = ref(0);
 
 let myInterval;
 let countdown = ref(0);
-let timerOn = ref(false);
+let isTimerOn = ref(false);
 
 function guessed(flag) {
   GAME_STORE.score[currentTeam.value].score++;
@@ -39,7 +42,7 @@ function startGame() {
   if (countdown.value <= 0) {
     countdown.value = 10;
   }
-  timerOn.value = true;
+  isTimerOn.value = true;
   myInterval = setInterval(timer, 1000);
 }
 
@@ -48,15 +51,15 @@ function timer() {
     countdown.value--;
   } else {
     clearInterval(myInterval);
-    timerOn.value = false;
+    isTimerOn.value = false;
   }
 }
 
 function stopTheTime(flag = true) {
-    clearInterval(myInterval);
-    timerOn.value = false;
+  clearInterval(myInterval);
+  isTimerOn.value = false;
   if (flag) {
-    countdown.value=0;
+    countdown.value = 0;
   }
 }
 
@@ -66,13 +69,37 @@ function resetIndexes() {
   secondWordIndex.value = nextWordIndex.value + 1;
 }
 
-watch(timerOn, function () {
-  if (timerOn.value == false && countdown.value == 0) {
-      if (currentTeam.value == GAME_STORE.score.length - 1)
-        currentTeam.value = 0;
-      else currentTeam.value++;
+watch(isTimerOn, function () {
+  if (isTimerOn.value == false && countdown.value == 0) {
+    if (currentTeam.value == GAME_STORE.score.length - 1) currentTeam.value = 0;
+    else {
+      currentTeam.value++;
     }
+    flash(
+      "Next team",
+      `${GAME_STORE.score[currentTeam.value].player1} and ${
+        GAME_STORE.score[currentTeam.value].player2
+      }, you're up!`,
+      "info"
+    );
+  }
 });
+
+watch(
+  currentPhase,
+  function () {
+    if (currentPhase.value == 1) {
+      GAME_STORE.gameOver();
+    } else {
+      flash(
+        `Phase number ${currentPhase.value + 1}`,
+        `In this phase you can use ${GAME_STORE.phases[currentPhase.value]}`,
+        "info"
+      );
+    }
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
@@ -84,9 +111,9 @@ watch(timerOn, function () {
     </li>
   </ul>
 
-  <button v-show="!timerOn" @click="startGame">Start the time</button>
+  <button v-show="!isTimerOn" @click="startGame">Start the time</button>
 
-  <div v-show="timerOn">
+  <div v-show="isTimerOn">
     <button v-show="firstWordIndex >= 0" @click="guessed(1)">
       {{ GAME_STORE.currentPhaseWords[firstWordIndex] }}
     </button>

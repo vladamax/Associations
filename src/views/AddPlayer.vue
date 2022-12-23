@@ -2,8 +2,9 @@
 import { useAssociationsStore } from "../stores/associationsStore";
 import { ref } from "vue";
 import router from "../router";
-import swal from "sweetalert2";
+import { useFlash } from "../composables/useFlash.js"
 
+let { flash } = useFlash();
 const ASSOCIATIONS_STORE = useAssociationsStore();
 
 let nickName = ref("");
@@ -12,7 +13,7 @@ function inputDone() {
   if (ASSOCIATIONS_STORE.addPlayer(nickName.value.trim())) {
     router.push({ name: "AddWords" });
   } else {
-   swal.fire("Nickname", "Already in use", "error");
+      flash("Nickname", "Already in use", "error");
   }
 }
 </script>

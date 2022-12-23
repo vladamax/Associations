@@ -4,6 +4,7 @@ import AddPlayer from "../views/AddPlayer.vue";
 import AddWords from "../views/AddWords.vue";
 import GameCountdown from "../views/GameCountdown.vue";
 import Game from "../views/Game.vue";
+import GameOver from "../views/gameOver.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,6 +37,12 @@ const router = createRouter({
       path: "/game",
       name: "Game",
       component: Game
+    },
+
+    {
+      path:"/gameOver",
+      name:"gameOver",
+      component: GameOver
     }
 
   ],

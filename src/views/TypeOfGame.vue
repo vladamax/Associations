@@ -7,12 +7,12 @@ import { useAssociationsStore } from '../stores/associationsStore';
 
     let players = ref(0);
     let wordsPerPlayer = ref(0);
-    let bothOptionsChoosed = ref(true);
+    let areBothOptionsChoosed = ref(false);
 
 watch([wordsPerPlayer,players], function(){
     if(players.value!=0 && wordsPerPlayer.value!=0)
     {
-        bothOptionsChoosed=false;
+        areBothOptionsChoosed=true;
         ASSOCIATIONS_STORE.totalPlayers = players.value;
         ASSOCIATIONS_STORE.wordsPerPlayer = wordsPerPlayer.value;
     }
@@ -42,8 +42,8 @@ watch([wordsPerPlayer,players], function(){
             </div>
 
             <div class="center-items">
-                <RouterLink :to="{ name: 'AddPlayer'}" :active="bothOptionsChoosed">
-                    <button :disabled="bothOptionsChoosed" class="continue-button">Start Brainstorming</button>
+                <RouterLink :to="{ name: 'AddPlayer'}" :active="!areBothOptionsChoosed">
+                    <button :disabled="!areBothOptionsChoosed" class="continue-button">Start Brainstorming</button>
                 </RouterLink>
             </div>
 </template>
