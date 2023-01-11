@@ -32,14 +32,16 @@ export const useGameStore = defineStore("Game", () => {
   }
 
   function scoreTable() {
-    const players = shuffle(ASSOCIATIONS_STORE.players);
-    for (var i = 0; i < players.length; ) {
-      score.push({
-        player1: players[i],
-        player2: players[i + 1],
-        score: 0,
-      });
-      i += 2;
+    if (score.length == 0) {
+      const players = shuffle(ASSOCIATIONS_STORE.players);
+      for (var i = 0; i < players.length; ) {
+        score.push({
+          player1: players[i],
+          player2: players[i + 1],
+          score: 0,
+        });
+        i += 2;
+      }
     }
   }
 
@@ -49,19 +51,14 @@ export const useGameStore = defineStore("Game", () => {
 
   function getWinnerString(winners) {
     if (winners.length == 1) {
-      return [
-        `The winners are ${winners[0][0]} and ${winners[0][1]}`,
-      ];
+      return [`The winners are ${winners[0][0]} and ${winners[0][1]}`];
     } else {
       return [...winners];
     }
   }
 
   let winner = reactive([]);
-  
-  
-  
-  
+
   function gameOver() {
     let winnerTeams = [];
     let highest = 0;

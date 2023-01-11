@@ -2,7 +2,7 @@
 import { useAssociationsStore } from "../stores/associationsStore";
 import { ref } from "vue";
 import router from "../router";
-import { useFlash } from "../composables/useFlash.js"
+import { useFlash } from "../composables/useFlash.js";
 
 let { flash } = useFlash();
 const ASSOCIATIONS_STORE = useAssociationsStore();
@@ -13,7 +13,7 @@ function inputDone() {
   if (ASSOCIATIONS_STORE.addPlayer(nickName.value.trim())) {
     router.push({ name: "AddWords" });
   } else {
-      flash("Nickname", "Already in use", "error");
+    flash("Nickname", "Already in use", "error");
   }
 }
 </script>
@@ -25,7 +25,7 @@ function inputDone() {
     >
     <label class="nickname-label" for="nickName">Also known as</label>
     <input
-      class="nickname-input "
+      class="nickname-input"
       v-model="nickName"
       type="text"
       placeholder="your nickname here"

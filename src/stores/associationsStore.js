@@ -3,30 +3,32 @@ import { defineStore } from "pinia";
 import swal from "sweetalert2";
 
 export const useAssociationsStore = defineStore("Associations", () => {
-
   let totalPlayers = ref();
   let wordsPerPlayer = ref();
 
-  let players = reactive(['peder','smrad','picka','govno','dovla','vesna','desimir','andjelija']);
-  let words = reactive(['Vlada','je','smrad','najveci']);
-  // let players = reactive([]);
-  // let words = reactive([]);
+  let players = reactive([]);
+  let words = reactive([]);
 
   let currentPlayersWords = reactive([]);
 
   let playerCount = computed(() => players.length);
 
-  let currentPlayersWordsCount = computed(
-    () => currentPlayersWords.length
-  );
+  let currentPlayersWordsCount = computed(() => currentPlayersWords.length);
+
+  function setTheGameType(numberOfPlayers, numberOfWords) {
+    if (totalPlayers.value != 0) {
+      players.splice(0);
+      words.splice(0);
+      currentPlayersWords.splice(0);
+    }
+    totalPlayers.value = numberOfPlayers;
+    wordsPerPlayer.value = numberOfWords;
+  }
 
   function addPlayer(player) {
-    if(players.includes(player))
-    {
+    if (players.includes(player)) {
       return false;
-    }
-    else
-    {
+    } else {
       players.push(player);
       return true;
     }
@@ -42,7 +44,7 @@ export const useAssociationsStore = defineStore("Associations", () => {
 
   function nextPlayer() {
     saveCurrentPlayersWords();
-    currentPlayersWords.splice(0,wordsPerPlayer.value);
+    currentPlayersWords.splice(0, wordsPerPlayer.value);
   }
 
   return {
@@ -50,12 +52,13 @@ export const useAssociationsStore = defineStore("Associations", () => {
     players,
     playerCount,
     currentPlayersWordsCount,
-    totalPlayers,
-    wordsPerPlayer,
     currentPlayersWords,
+    wordsPerPlayer,
+    totalPlayers,
+    setTheGameType,
     addPlayer,
     addWord,
     nextPlayer,
-    saveCurrentPlayersWords
+    saveCurrentPlayersWords,
   };
 });
