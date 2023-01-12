@@ -4,7 +4,7 @@ import AddPlayer from "../views/AddPlayer.vue";
 import AddWords from "../views/AddWords.vue";
 import GameCountdown from "../views/GameCountdown.vue";
 import Game from "../views/Game.vue";
-import GameOver from "../views/gameOver.vue";
+import GameOver from "../views/GameOver.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
