@@ -40,7 +40,7 @@ function guessed(flag) {
 
 function startGame() {
   if (countdown.value <= 0) {
-    countdown.value = 10;
+    countdown.value = 100;
   }
   isTimerOn.value = true;
   myInterval = setInterval(timer, 1000);
@@ -111,19 +111,25 @@ watch(
     </li>
   </ul>
 
-  <button v-show="!isTimerOn" @click="startGame">Start the time</button>
+  <div class="GuessingWords">
+    <div class="TimeSwitch" v-if="!isTimerOn">
+      <button class="" @click="startGame">Start timer</button>
+    </div>
+    <div v-if="isTimerOn">
 
-  <div v-show="isTimerOn">
-    <button v-show="firstWordIndex >= 0" @click="guessed(1)">
-      {{ GAME_STORE.currentPhaseWords[firstWordIndex] }}
-    </button>
+      <h1 class="countDownNumber">{{ countdown }}</h1>
+      <div class="GuessTheWord">
+        <button v-show="firstWordIndex >= 0" @click="guessed(1)">
+          {{ GAME_STORE.currentPhaseWords[firstWordIndex] }}
+        </button>
 
-    <button v-show="secondWordIndex >= 0" @click="guessed">
-      {{ GAME_STORE.currentPhaseWords[secondWordIndex] }}
-    </button>
-
-    <h1>{{ countdown }}</h1>
-
-    <button @click="stopTheTime">Stop the time</button>
+        <button v-show="secondWordIndex >= 0" @click="guessed">
+          {{ GAME_STORE.currentPhaseWords[secondWordIndex] }}
+        </button>
+      </div>
+            <div class="stopTheTime">
+        <button class="" @click="stopTheTime">Stop timer</button>
+      </div>
+    </div>
   </div>
 </template>

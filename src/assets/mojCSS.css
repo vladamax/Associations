@@ -1,13 +1,13 @@
+body {
+  background-color: cornflowerblue;
+  font-family: sans-serif;
+}
+
 ul{
   margin: 0;
   padding: 0;
   border: none;
   list-style-type: none;
-}
-
-body{
-  background-color: cornflowerblue;
-  font-family: sans-serif;
 }
 
 .rounded-button {
@@ -113,20 +113,71 @@ body{
 
 
 .gameplay {
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: stretch;
-  border-style: dashed;
+  justify-content: space-evenly;
   border-width: thick;
   gap: 2rem;
   list-style-type:none;
 }
 
 .gameplay > li {
-  background-color: brown;
+  background-color:coral;
   border-style: solid;
   border-width: thick;
-  border-color: yellow;
   text-align: center;
   width: 25%;
+}
+
+
+.TimeSwitch{
+    padding-bottom:10%;
+    padding-top:20%;
+}
+.TimeSwitch > button{
+  background-color: rgb(187, 255, 0);
+  padding:20px;
+  font-size:xx-large;
+}
+
+.stopTheTime{
+}
+
+.stopTheTime > button{
+  background-color: red;
+  padding:20px 30px 20px 30px;
+  font-size: xx-large;
+}
+
+.GuessTheWord{
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  gap: 15px;
+}
+
+.GuessTheWord > button{
+  padding: 20px;
+  background-color: #20da8d;
+  width: 40%;
+  flex-basis:auto;
+  font-size: xx-large;
+}
+
+.GuessingWords{
+  text-align: center;
+  margin:7% 0 15% 0;
+}
+
+.countDownNumber{
+  font-size: 80px;
+}
+
+.finalResult{
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5% 0 15% 0;
 }

@@ -49,46 +49,17 @@ export const useGameStore = defineStore("Game", () => {
     return shuffle(words);
   }
 
-  function getWinnerString(winners) {
-    if (winners.length == 1) {
-      return [`The winners are ${winners[0][0]} and ${winners[0][1]}`];
-    } else {
-      return [...winners];
-    }
-  }
-
-  let winner = reactive([]);
 
   function gameOver() {
-    let winnerTeams = [];
-    let highest = 0;
-
-    score.map(function (value, index) {
-      if (value.score > highest) {
-        highest = value.score;
-        if (winnerTeams.length == 0) {
-          winnerTeams.push([value.player1, value.player2]);
-        } else {
-          winnerTeams.splice(0, winnerTeams.length, [
-            value.player1,
-            value.player2,
-          ]);
-        }
-      } else if (value.score == highest) {
-        winnerTeams.push([value.player1, value.player2]);
-      }
-    });
-    winner.push(highest, ...getWinnerString(winnerTeams));
     router.push({ name: "gameOver" });
   }
 
   return {
-    winner,
     score,
     currentPhaseWords,
     phases,
     gamePrepare,
     nextPhase,
-    gameOver,
+    gameOver
   };
 });
