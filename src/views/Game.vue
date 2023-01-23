@@ -40,7 +40,7 @@ function guessed(flag) {
 
 function startGame() {
   if (countdown.value <= 0) {
-    countdown.value = 100;
+    countdown.value = 60;
   }
   isTimerOn.value = true;
   myInterval = setInterval(timer, 1000);
