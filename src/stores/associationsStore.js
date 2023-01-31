@@ -6,11 +6,8 @@ export const useAssociationsStore = defineStore("Associations", () => {
   let totalPlayers = ref();
   let wordsPerPlayer = ref();
 
-  // let players = reactive([]);
-  // let words = reactive([]);
-
-  let players = reactive(['peder','smrad','picka','govno','dovla','vesna','desimir','andjelija']);
-  let words = reactive(['Vlada','je','smrad','najveci']);
+  let players = reactive([]);
+  let words = reactive([]);
 
   let currentPlayersWords = reactive([]);
 
