@@ -88,7 +88,7 @@ watch(isTimerOn, function () {
 watch(
   currentPhase,
   function () {
-    if (currentPhase.value == 1) {
+    if (currentPhase.value == 3) {
       GAME_STORE.gameOver();
     } else {
       flash(
